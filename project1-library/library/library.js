@@ -5,11 +5,6 @@ function Book(title, author, pages, read) {
     this.author = author
     this.pages = pages
     this.read = read
-    if(read == true) {
-        return this.read = 'already read'
-    } else {
-        return this.read = 'not read yet'
-    }
 }
 //myLib.push(new Book('JavaScript', 'Ervis', '420', false))
 //myLib.push(new Book('Ruby', 'Kriste', '69', true))
@@ -22,10 +17,10 @@ function addBookToLibrary() {
 
     if(title != '' && author != '') {
         if(pages > 0) {
-            if(isRead == 'read') {
-                myLib.push(new Book(title, author, pages, true))              
-            } else if(isRead == 'notRead'){
-                myLib.push(new Book(title, author, pages, false)) 
+            if(isRead == 'already read') {
+                myLib.push(new Book(title, author, pages, isRead))              
+            } else if(isRead == 'not read yet'){
+                myLib.push(new Book(title, author, pages, isRead)) 
             } else {
                 alert("Is it already read?")
             }
@@ -39,14 +34,14 @@ function addBookToLibrary() {
 }
 
 function displayBook() { 
+    document.getElementById('bookshelf').innerHTML = ""
     for(let i = 0; i < myLib.length; i++) {
-        // Parasyti if salyga, kad nesikartotu idedami objektai i DOM
         document.getElementById('bookshelf').innerHTML += `
         <div class="book">
             <p>"${myLib[i]['title']}" by ${myLib[i]['author']}, ${myLib[i]['pages']} pages, ${myLib[i]['read']}</p>
             <div class="buttons">
                 <button class="removeBook" onclick="removeBook(this)">Remove</button>
-                <button class="readNotRead">Read</button>
+                <button class="readNotRead" onclick="readToggle(this)">Read</button>
             </div>
         </div>
         `
@@ -58,10 +53,19 @@ function displayBook() {
     }
 }
 
-function removeBook(elem) {
-    elem.parentNode.parentNode.remove()
-    myLib.splice(elem.parentNode.parentNode.dataset.index, 1)
+function removeBook(e) {
+    e.parentNode.parentNode.remove()
+    myLib.splice(e.parentNode.parentNode.dataset.index, 1)
+    displayBook()
 }
 
-
+function readToggle(e) {
+    let read = myLib[e.parentNode.parentNode.dataset.index]
+    if (read.read == 'already read') {
+        read.read = 'not read yet'
+    } else {
+        read.read = 'already read'
+    }
+    displayBook()
+}
 // Parasyti read / not read funkcija
