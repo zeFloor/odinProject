@@ -18,5 +18,21 @@ h1 {
     height: 300px;
     box-shadow: 0 0 10px 5px rgb(117, 102, 102);
     margin: 0 auto;
-    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.board > div {
+    width: 100px;
+    height: 100px;
+    box-shadow: 0 0 1px 1px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+}
+
+.board div > p {
+    margin: 0;
+    padding: 0;
 }
