@@ -37,12 +37,24 @@ const gameBoard = (() => {
                         ['BL', 'BC', 'BR'],
                         ['TL', 'CC', 'BR'],
                         ['TR', 'CC', 'BL']]
-        winOptions.forEach(win => {
-            winner = win.every(i => playerX.includes(i))
-            if(winner){
-                // winners alert reset offer
+        for(const win of winOptions) {
+            winnerX = win.every(i => playerX.includes(i))
+            winnerO = win.every(i => playerO.includes(i))
+            if(winnerX){
+                alert(`Congradulations! ${players[0].playerName} WINS! `)
+                document.getElementById('matchEnd').style.removeProperty('display')
+                displayController.grayed()
+            } else if(winnerO)  {
+                alert(`Congradulations! ${players[1].playerName} WINS! `)
+                document.getElementById('matchEnd').style.removeProperty('display')
+                displayController.grayed()
+            } else if (playerX.length + playerO.length == 9) {
+                alert('Match is Draw')
+                document.getElementById('matchEnd').style.removeProperty('display')
+                displayController.grayed()
+                break
             }
-        })
+        }
     }
 
     const boardReset = () => {
@@ -52,6 +64,7 @@ const gameBoard = (() => {
         })
         playerO = []
         playerX = []
+        turn = 0
     }
 
     return {addXnO, boardReset}
@@ -59,13 +72,47 @@ const gameBoard = (() => {
 
 const displayController = (() => {
 
+    const resetMatch = () => {
+        gameBoard.boardReset()
+        document.getElementById('matchEnd').style.setProperty('display', 'none')
+        unGrayed()
+    }
+
+    const restartGame = () => {
+        players = []
+        gameBoard.boardReset()
+        document.getElementById('matchEnd').style.setProperty('display', 'none')
+        document.querySelector('.players').innerHTML = 
+        `
+            <input type="text" placeholder="Player1" class="player1">
+            <input type="text" placeholder="Player2" class="player2">
+            <input type="submit" class="submit" onclick="displayController.checkPlayers(this)">
+        `
+    }
+
+    const grayed = () => {
+        document.querySelector('.board').style.setProperty('background-color', 'gray')
+        document.querySelector('.board').style.setProperty('opacity', '0.4')
+    }
+
+    const unGrayed = () => {
+        document.querySelector('.board').style.removeProperty('background-color')
+        document.querySelector('.board').style.removeProperty('opacity')
+        document.querySelector('.players').innerHTML = 
+            `<p>Player1: ${players[0].playerName}</p>
+            <p>Player2: ${players[1].playerName}</p>`
+         
+    }
+
     const checkPlayers = (e) => {
         if (document.querySelector('.player1').value == '' || document.querySelector('.player2').value == '')
         alert('Please type in your names')
         else {
            players.push(player(document.querySelector('.player1').value, 'X'))
            players.push(player(document.querySelector('.player2').value, 'O'))
-           console.log(players)
+
+           unGrayed()
+
         }
     }
 
@@ -87,7 +134,5 @@ const displayController = (() => {
         })
     })()
 
-    return {checkPlayers}
+    return {checkPlayers, resetMatch, restartGame, grayed}
 })()
-
-gameBoard.boardReset()

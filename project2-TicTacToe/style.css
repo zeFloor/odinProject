@@ -20,6 +20,7 @@ h1 {
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
+    position: relative;
 }
 
 .board > div {
@@ -45,4 +46,20 @@ h1 {
     justify-content: center;
     flex-wrap: wrap;
     gap: 10px;
+}
+
+#matchEnd {
+    position: absolute;
+    width: 300px;
+    color: white;
+    font-size: 2rem;
+    flex-direction: column;
+    gap: 35px;
+    left: cla(50% - 150px);
+    top: calc(50% - 50px);
+}
+
+#matchEnd p:hover {
+    font-size: 2.3rem;
+    cursor: pointer;
 }

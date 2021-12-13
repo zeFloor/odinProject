@@ -10,7 +10,8 @@
 </head>
 <body>
     <h1>Tic Tac Toe</h1>
-    <div class="board">
+    <div class="board" style="background-color: gray;
+    opacity: 0.4;">
         <div class="TL" id="cell"></div>
         <div class="TC" id="cell"></div>
         <div class="TR" id="cell"></div>
@@ -20,6 +21,10 @@
         <div class="BL" id="cell"></div>
         <div class="BC" id="cell"></div>
         <div class="BR" id="cell"></div>
+        <div id="matchEnd" style="display: none;">
+            <p onclick="displayController.resetMatch()">Restart Match</p>
+            <p onclick="displayController.restartGame()">Start New Game</p>
+        </div>
     </div>
     <div class="players">
         <input type="text" placeholder="Player1" class="player1">
