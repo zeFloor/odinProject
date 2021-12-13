@@ -17,15 +17,21 @@ const gameBoard = (() => {
         playerX.push(slot)
         else
         playerO.push(slot)
-        
+
         _printXnO(sign, slot)
     }
-    const checkEmptyCell = () => {}
     const _printXnO = (sign, slot) => {
         document.querySelector(`.${slot}`).innerHTML = `<p>${sign}</p>`
         }
-    const checkIfWin = () => {}
-    const boardReset = () => {}
+    const checkIfWin = () => {
+
+    }
+    const boardReset = () => {
+        let cells = document.querySelectorAll('#cell')
+        cells.forEach(cell => {
+            cell.innerHTML = ''
+        });
+    }
 
     return {addXnO, checkIfWin, boardReset}
 })()
@@ -63,3 +69,4 @@ const displayController = (() => {
     return {checkPlayers,}
 })()
 
+gameBoard.boardReset()
