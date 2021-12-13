@@ -2,6 +2,7 @@ let players = []
 let turn = 0
 
 const player = (name, sign) => {
+
     let playerName = name
     let playerSign = sign
 
@@ -9,6 +10,7 @@ const player = (name, sign) => {
 }
 
 const gameBoard = (() => {
+
     let playerX = []
     let playerO = []
 
@@ -17,26 +19,46 @@ const gameBoard = (() => {
         playerX.push(slot)
         else
         playerO.push(slot)
-
+        console.log(playerX, playerO)
         _printXnO(sign, slot)
+        _checkIfWin()
     }
+
     const _printXnO = (sign, slot) => {
         document.querySelector(`.${slot}`).innerHTML = `<p>${sign}</p>`
         }
-    const checkIfWin = () => {
 
+    const _checkIfWin = () => {
+        let winOptions = [['TC', 'CC', 'BC'],
+                        ['TL', 'CL', 'BL'],
+                        ['TR', 'CR', 'BR'],
+                        ['TL', 'TC', 'TR'],
+                        ['CL', 'CC', 'CR'],
+                        ['BL', 'BC', 'BR'],
+                        ['TL', 'CC', 'BR'],
+                        ['TR', 'CC', 'BL']]
+        winOptions.forEach(win => {
+            winner = win.every(i => playerX.includes(i))
+            if(winner){
+                // winners alert reset offer
+            }
+        })
     }
+
     const boardReset = () => {
         let cells = document.querySelectorAll('#cell')
         cells.forEach(cell => {
             cell.innerHTML = ''
-        });
+        })
+        playerO = []
+        playerX = []
     }
 
-    return {addXnO, checkIfWin, boardReset}
+    return {addXnO, boardReset}
 })()
 
 const displayController = (() => {
+
     const checkPlayers = (e) => {
         if (document.querySelector('.player1').value == '' || document.querySelector('.player2').value == '')
         alert('Please type in your names')
@@ -61,12 +83,11 @@ const displayController = (() => {
                     }
                     turn++
                 }
-                
             })
-        });
+        })
     })()
 
-    return {checkPlayers,}
+    return {checkPlayers}
 })()
 
 gameBoard.boardReset()
