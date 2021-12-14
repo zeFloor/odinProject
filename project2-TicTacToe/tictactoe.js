@@ -1,6 +1,8 @@
 let players = []
 let turn = 0
 
+// Function factory for creating player object
+
 const player = (name, sign) => {
 
     let playerName = name
@@ -9,25 +11,27 @@ const player = (name, sign) => {
     return {playerName, playerSign}
 }
 
+// Module pattern for storing, printing and checking game results
+
 const gameBoard = (() => {
 
     let playerX = []
     let playerO = []
-
+    // Method that stores player turn then prints and checks for winner
     const addXnO = (sign, slot) => {
         if(sign == 'X')
         playerX.push(slot)
         else
         playerO.push(slot)
-        console.log(playerX, playerO)
+
         _printXnO(sign, slot)
         _checkIfWin()
     }
-
+    // Private method to print out X or O symbol to the board
     const _printXnO = (sign, slot) => {
         document.querySelector(`.${slot}`).innerHTML = `<p>${sign}</p>`
         }
-
+    // Private method that checks if there is a winner
     const _checkIfWin = () => {
         let winOptions = [['TC', 'CC', 'BC'],
                         ['TL', 'CL', 'BL'],
@@ -37,14 +41,15 @@ const gameBoard = (() => {
                         ['BL', 'BC', 'BR'],
                         ['TL', 'CC', 'BR'],
                         ['TR', 'CC', 'BL']]
+        // Loops over possible win combinations and search for them in the array of stored player turns
         for(const win of winOptions) {
             winnerX = win.every(i => playerX.includes(i))
             winnerO = win.every(i => playerO.includes(i))
-            if(winnerX){
+            if(winnerX) {
                 alert(`Congradulations! ${players[0].playerName} WINS! `)
                 document.getElementById('matchEnd').style.removeProperty('display')
                 displayController.grayed()
-            } else if(winnerO)  {
+            } else if(winnerO) {
                 alert(`Congradulations! ${players[1].playerName} WINS! `)
                 document.getElementById('matchEnd').style.removeProperty('display')
                 displayController.grayed()
@@ -56,7 +61,7 @@ const gameBoard = (() => {
             }
         }
     }
-
+    // Method that clears board, set turns to 0 and empties out player turn arrays
     const boardReset = () => {
         let cells = document.querySelectorAll('#cell')
         cells.forEach(cell => {
@@ -70,14 +75,16 @@ const gameBoard = (() => {
     return {addXnO, boardReset}
 })()
 
-const displayController = (() => {
+// Module pattern that controls the flow of the fight
 
+const displayController = (() => {
+    // Method that restarts the match
     const resetMatch = () => {
         gameBoard.boardReset()
         document.getElementById('matchEnd').style.setProperty('display', 'none')
         unGrayed()
     }
-
+    // Method that restarts the game, new player names are asked
     const restartGame = () => {
         players = []
         gameBoard.boardReset()
@@ -89,12 +96,12 @@ const displayController = (() => {
             <input type="submit" class="submit" onclick="displayController.checkPlayers(this)">
         `
     }
-
+    // Method that styles the board how it looks when the game is not started
     const grayed = () => {
         document.querySelector('.board').style.setProperty('background-color', 'gray')
         document.querySelector('.board').style.setProperty('opacity', '0.4')
     }
-
+    // Method that hides the input section, and undo the styles of grayed method
     const unGrayed = () => {
         document.querySelector('.board').style.removeProperty('background-color')
         document.querySelector('.board').style.removeProperty('opacity')
@@ -103,7 +110,7 @@ const displayController = (() => {
             <p>Player2: ${players[1].playerName}</p>`
          
     }
-
+    // Method that checks if players typed their name in, game can't be started elseway
     const checkPlayers = (e) => {
         if (document.querySelector('.player1').value == '' || document.querySelector('.player2').value == '')
         alert('Please type in your names')
@@ -115,7 +122,7 @@ const displayController = (() => {
 
         }
     }
-
+    // Private method to check if players are placing their symbols in the empty spot
     const _placedSymbol = (() => {
         const cells = document.querySelectorAll('#cell')
         cells.forEach(cell => {
