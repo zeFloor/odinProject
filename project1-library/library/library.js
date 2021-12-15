@@ -6,8 +6,6 @@ function Book(title, author, pages, read) {
     this.pages = pages
     this.read = read
 }
-//myLib.push(new Book('JavaScript', 'Ervis', '420', false))
-//myLib.push(new Book('Ruby', 'Kriste', '69', true))
 
 function addBookToLibrary() {
     let title = document.querySelector('.title').value
@@ -68,4 +66,3 @@ function readToggle(e) {
     }
     displayBook()
 }
-// Parasyti read / not read funkcija
