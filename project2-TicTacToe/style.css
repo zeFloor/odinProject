@@ -63,3 +63,8 @@ h1 {
     font-size: 2.3rem;
     cursor: pointer;
 }
+
+.checkbox::after {
+    content: '\0041 \0049';
+    padding-left: 16px;
+}
