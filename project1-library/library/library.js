@@ -1,10 +1,47 @@
-myLib = []
+class Book {
 
-function Book(title, author, pages, read) {
-    this.title = title
-    this.author = author
-    this.pages = pages
-    this.read = read
+    constructor(title, author, pages, read) {
+        this.title = title
+        this.author = author
+        this.pages = pages
+        this.read = read
+    }
+
+    static displayBook() { 
+        document.getElementById('bookshelf').innerHTML = ""
+        for(let i = 0; i < myLib.length; i++) {
+            document.getElementById('bookshelf').innerHTML += `
+            <div class="book">
+                <p>"${myLib[i]['title']}" by ${myLib[i]['author']}, ${myLib[i]['pages']} pages, ${myLib[i]['read']}</p>
+                <div class="buttons">
+                    <button class="removeBook" onclick="Book.removeBook(this)">Remove</button>
+                    <button class="readNotRead" onclick="Book.readToggle(this)">Read</button>
+                </div>
+            </div>
+            `
+        }
+        let bookshelf = document.querySelectorAll('.book')
+    
+        for(let i = 0; i < bookshelf.length; i++) {
+            bookshelf[i].setAttribute('data-index', i)
+        }
+    }
+
+    static removeBook(e) {
+        e.parentNode.parentNode.remove()
+        myLib.splice(e.parentNode.parentNode.dataset.index, 1)
+        this.displayBook()
+    }
+
+    static readToggle(e) {
+        let read = myLib[e.parentNode.parentNode.dataset.index]
+        if (read.read == 'already read') {
+            read.read = 'not read yet'
+        } else {
+            read.read = 'already read'
+        }
+        this.displayBook()
+    }
 }
 
 function addBookToLibrary() {
@@ -28,8 +65,11 @@ function addBookToLibrary() {
     } else {
         alert("Don't forget the title and author")
     }
-    displayBook()
+    console.log(myLib)
+    Book.displayBook()
 }
+
+myLib = []
 
 function displayBook() { 
     document.getElementById('bookshelf').innerHTML = ""
