@@ -29,14 +29,17 @@ header {
 .navBar ul {
     list-style-type: none;
     justify-content: center;
-    gap: 50px;
     padding: 0;
     margin: 0;
 }
 
 .navBar ul li {
     cursor: pointer;
-    padding: 20px 0;
+    padding: 20px 30px;
+}
+
+.navBar ul li:hover {
+    background-color: rgb(51, 94, 175);
 }
 
 /* END OF HEADER */
@@ -63,8 +66,10 @@ main .lid {
 
 main .title {
     text-align: center;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin: 0;
+    padding: 30px 0;
+    color: cornsilk;
+    letter-spacing: 0.05em;
 }
 
 main .scoby {
@@ -116,6 +121,7 @@ footer p {
 #kombucha h2 {
     margin: 0;
     padding: 15px 0;
+    letter-spacing: 0.02em;
 }
 
 /* END OF ABOUT TAB */
@@ -139,3 +145,37 @@ footer p {
 }
 
 /* END OF CONTACTS */
+
+/* MENU TAB */
+
+#kombucha .menuContent h2 {
+    text-align: center;
+}
+
+#kombucha img {
+    width: 200px;
+    height: 200px;
+    object-fit: stretch;
+    border-radius: 15%;
+    border: 3px solid cornsilk;
+}
+
+#kombucha .menuList {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 10px 0;
+}
+
+#kombucha .menuContent li {
+    display: flex;
+    text-align: left;
+    gap: 20px;
+}
+
+#kombucha .menuContent li:nth-child(even) {
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+
+/* END OF MENU TAB */
