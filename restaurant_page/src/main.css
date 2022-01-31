@@ -74,7 +74,7 @@ main .scoby {
 }
 
 main #kombucha {
-    min-height: auto;
+    min-height: 300px;
     background-image: linear-gradient(rgb(218, 162, 23), rgb(141, 102, 4));
     border-bottom-left-radius: 95px;
     border-bottom-right-radius: 95px;
@@ -113,7 +113,7 @@ footer p {
     border-radius: 10%;
 }
 
-#kombucha .aboutContainer h2 {
+#kombucha h2 {
     margin: 0;
     padding: 15px 0;
 }
@@ -122,6 +122,20 @@ footer p {
 
 /* CONTACTS */
 
+#kombucha .contactsContent h2 {
+    padding-top: 100px;
+    text-align: center;
+}
 
+#kombucha ul a {
+    text-decoration: none;
+    color: cornsilk;
+}
+
+#kombucha ul {
+    list-style-type: none;
+    text-align: center;
+    padding-left: 0;
+}
 
 /* END OF CONTACTS */
