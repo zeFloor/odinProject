@@ -1,4 +1,9 @@
-import initialLoad from './initial_load'
+import './main.css'
+import mainLoad from './main_load'
+import aboutTab from './about'
+import contactsTab from './contacts'
 
 console.log("Just checking if everything is working")
-initialLoad()
+mainLoad()
+//aboutTab()
+contactsTab()

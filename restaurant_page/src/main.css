@@ -1,0 +1,127 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #72c6a2;
+    margin: 0;
+}
+
+.flex-container {
+    display: flex;
+}
+
+/* HEADER */
+
+header {
+    width: 100%;
+}
+
+.navBar {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: cornflowerblue;
+    border-radius: 0 0 20px 20px;
+}
+
+.navBar ul {
+    list-style-type: none;
+    justify-content: center;
+    gap: 50px;
+    padding: 0;
+    margin: 0;
+}
+
+.navBar ul li {
+    cursor: pointer;
+    padding: 20px 0;
+}
+
+/* END OF HEADER */
+
+/* MAIN */
+
+main {
+    max-width: 800px;
+    margin: 50px auto 0;
+    border: 5px solid cornsilk;
+    border-top: none;
+    border-top-left-radius: 130px;
+    border-top-right-radius: 130px;
+    border-bottom-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+}
+
+main .lid {
+    width: 100%;
+    height: 60px;
+    background-color: rgb(243, 152, 49);
+    border-radius: 10px;
+}
+
+main .title {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+main .scoby {
+    width: 100%;
+    height: 40px;
+    background-color: rgb(238, 209, 135);
+}
+
+main #kombucha {
+    min-height: auto;
+    background-image: linear-gradient(rgb(218, 162, 23), rgb(141, 102, 4));
+    border-bottom-left-radius: 95px;
+    border-bottom-right-radius: 95px;
+}
+
+/* END OFF MAIN */
+
+/* FOOTER */
+
+footer {
+    width: 100%;
+    background-color: cornflowerblue;
+    margin-top: 50px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+}
+
+footer p {
+    margin: 0;
+    padding: 15px 0;
+}
+
+/* END OF FOOTER */
+
+
+/* ABOUT TAB */
+
+#kombucha .aboutContent {
+    padding: 20px 50px;
+}
+
+#kombucha .aboutImage {
+    max-width: 250px;
+    max-height: 300px;
+    border-radius: 10%;
+}
+
+#kombucha .aboutContainer h2 {
+    margin: 0;
+    padding: 15px 0;
+}
+
+/* END OF ABOUT TAB */
+
+/* CONTACTS */
+
+
+
+/* END OF CONTACTS */
