@@ -17,9 +17,12 @@ const copyRights = document.createElement('p')
 const mainLoad = () => {
     //HEADER
     navBar.className = 'navBar'
-    about.className = 'about'
-    menu.className = 'menu'
-    contacts.className = 'contacts'
+    about.className = 'about on navLink'
+    menu.className = 'menu navLink'
+    contacts.className = 'contacts navLink'
+    menu.setAttribute('onclick', 'nav(this)')
+    about.setAttribute('onclick', 'nav(this)')
+    contacts.setAttribute('onclick', 'nav(this)')
     ul.className = 'flex-container'
     about.innerText = 'About'
     menu.innerText = 'Menu'

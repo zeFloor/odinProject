@@ -38,6 +38,10 @@ header {
     padding: 20px 30px;
 }
 
+.navBar .on {
+    background-color: rgb(51, 94, 175);
+}
+
 .navBar ul li:hover {
     background-color: rgb(51, 94, 175);
 }
@@ -84,6 +88,7 @@ main #kombucha {
     border-bottom-left-radius: 95px;
     border-bottom-right-radius: 95px;
 }
+
 
 /* END OFF MAIN */
 

@@ -34,9 +34,9 @@ const menuTab = () => {
         </div>
     `
 
-    menuList.append(item1, item2, item3)
-    menuContent.append(menuTitle, menuList)
-    document.getElementById('kombucha').appendChild(menuContent)
+        menuList.append(item1, item2, item3)
+        menuContent.append(menuTitle, menuList)
+        document.getElementById('kombucha').appendChild(menuContent)
 
 }
 
